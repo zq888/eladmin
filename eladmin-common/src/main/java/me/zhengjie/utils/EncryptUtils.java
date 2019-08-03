@@ -9,7 +9,7 @@ import javax.crypto.spec.IvParameterSpec;
 
 /**
  * 加密
- * @author jie
+ * @author Zheng Jie
  * @date 2018-11-23
  */
 public class EncryptUtils {
@@ -92,9 +92,5 @@ public class EncryptUtils {
      */
     public static String encryptPassword(String password){
         return  DigestUtils.md5DigestAsHex(password.getBytes());
-    }
-
-    public static void main(String[] args) {
-        System.out.println(encryptPassword("123456"));
     }
 }

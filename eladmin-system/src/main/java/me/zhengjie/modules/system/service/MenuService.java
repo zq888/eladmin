@@ -2,7 +2,9 @@ package me.zhengjie.modules.system.service;
 
 import me.zhengjie.modules.system.domain.Menu;
 import me.zhengjie.modules.system.domain.Role;
+import me.zhengjie.modules.system.service.dto.CommonQueryCriteria;
 import me.zhengjie.modules.system.service.dto.MenuDTO;
+import me.zhengjie.modules.system.service.dto.RoleSmallDTO;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -11,11 +13,19 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @author jie
+ * @author Zheng Jie
  * @date 2018-12-17
  */
 @CacheConfig(cacheNames = "menu")
 public interface MenuService {
+
+    /**
+     * queryAll
+     * @param criteria
+     * @return
+     */
+    @Cacheable(keyGenerator = "keyGenerator")
+    List<MenuDTO> queryAll(CommonQueryCriteria criteria);
 
     /**
      * get
@@ -74,7 +84,7 @@ public interface MenuService {
      * @param roles
      * @return
      */
-    List<MenuDTO> findByRoles(List<Role> roles);
+    List<MenuDTO> findByRoles(List<RoleSmallDTO> roles);
 
     /**
      * buildMenus

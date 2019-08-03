@@ -1,6 +1,7 @@
 package me.zhengjie.modules.system.service;
 
 import me.zhengjie.modules.system.domain.Permission;
+import me.zhengjie.modules.system.service.dto.CommonQueryCriteria;
 import me.zhengjie.modules.system.service.dto.PermissionDTO;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
@@ -10,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * @author jie
+ * @author Zheng Jie
  * @date 2018-12-08
  */
 @CacheConfig(cacheNames = "permission")
@@ -68,4 +69,12 @@ public interface PermissionService {
      */
     @Cacheable(keyGenerator = "keyGenerator")
     Object buildTree(List<PermissionDTO> permissionDTOS);
+
+    /**
+     * queryAll
+     * @param criteria
+     * @return
+     */
+    @Cacheable(keyGenerator = "keyGenerator")
+    List<PermissionDTO> queryAll(CommonQueryCriteria criteria);
 }

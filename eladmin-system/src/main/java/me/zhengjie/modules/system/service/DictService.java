@@ -5,13 +5,23 @@ import me.zhengjie.modules.system.service.dto.DictDTO;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Pageable;
 
 /**
-* @author jie
+* @author Zheng Jie
 * @date 2019-04-10
 */
 @CacheConfig(cacheNames = "dict")
 public interface DictService {
+
+    /**
+     * 查询
+     * @param dict
+     * @param pageable
+     * @return
+     */
+    @Cacheable(keyGenerator = "keyGenerator")
+    Object queryAll(DictDTO dict, Pageable pageable);
 
     /**
      * findById

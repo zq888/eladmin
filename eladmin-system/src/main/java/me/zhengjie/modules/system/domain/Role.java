@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -15,7 +14,7 @@ import java.util.Set;
 
 /**
  * 角色
- * @author jie
+ * @author Zheng Jie
  * @date 2018-11-22
  */
 @Entity
@@ -36,6 +35,10 @@ public class Role implements Serializable {
     // 数据权限类型 全部 、 本级 、 自定义
     @Column(name = "data_scope")
     private String dataScope = "本级";
+
+    // 数值越小，级别越大
+    @Column(name = "level")
+    private Integer level = 3;
 
     @Column
     private String remark;
